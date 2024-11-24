@@ -65,20 +65,32 @@ log_file = nordiv.log
 
 Then run `nordiv` with the `-c` option:
 
-```
+```bash
 nordiv -c path/to/your/config.ini
 ```
 
 ### Examples
 
 1. Using command-line arguments:
-   ```
-   nordiv --api-url https://api.nordvpn.com/v1/servers --subnet 192.168.1.0/24 --new-prefix 26 --log-level info --log nordiv.log
+   ```bash
+   nordiv --api-url https://api.nordvpn.com/v1/servers --subnet 192.168.1.0/24 --new-prefix 26 --log-level info --log-file nordiv.log
    ```
 
 2. Using a configuration file:
-   ```
+   ```bash
    nordiv -c nordiv.ini
+   ```
+
+### Running in Docker
+
+1. Build Docker container
+   ```bash
+   docker build -t nordiv .
+   ```
+
+2. Run Docker container
+   ```bash
+   docker run --rm -it -v ${PWD}:/app -- nordiv --api-url https://api.nordvpn.com/v1/servers --subnet 192.168.1.0/24 --new-prefix 26 --log-level debug --log-file /app/nordiv.log
    ```
 
 ## Output
